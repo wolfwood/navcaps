@@ -1,4 +1,4 @@
-# Navigation Switch key-caps and MX Adapters
+# Navigation Switch Key-Caps and MX Adapters
 
 
 ## SKQU - The Classic 10x10 mm 5-way Nav Switch
@@ -9,7 +9,7 @@
 There is one pin for each of the 5 switches and one common pin.
 Because its possible to activate up to 3 switches at once (2 adjecent directions and 'down') integrating this switch with a keyboard matrix will require diodes on all switch pins.
 
-For example if using QMK `config.h` parameter `DIODE_DIRECTION ROW2COL` and connecting a switch pin to each row, with the common pin as a unique column, diodes should have the stripe facing toward the switch.  If using `DIODE_DIRECTION COL2ROW` with switch pins connected to rows and common as a new column, then diodes should face away from the switch.
+For example if using QMK `config.h` setting `DIODE_DIRECTION ROW2COL` and connecting a switch pin to each row, with the common pin as a unique column, diodes should have the stripe facing toward the switch.  If using `DIODE_DIRECTION COL2ROW` with switch pins connected to rows and common as a new column, then diodes should face away from the switch.
 
 
 #### Operating Force
@@ -42,6 +42,6 @@ the ALPS RKJXS
 
 #### Operating Force
 0.8±0.5 N at ??? stem height (4.45 mm minus ??? mm to center of rotation), reported.<br>
-**<36 gf·cm** (**< 3.5 mN·m**) calculated normalized force.
+**< 36 gf·cm** (**< 3.5 mN·m**) calculated normalized force.
 
 ### [Datasheet](https://tech.alpsalpine.com/prod/e/pdf/multicontrol/switch/rkjxs/rkjxs.pdf)
