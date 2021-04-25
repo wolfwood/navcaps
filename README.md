@@ -1,9 +1,22 @@
-# Navigation Switch Key-Caps and MX Adapters
+# Navigation Switch Key-Caps and MX Adapters and Trackpoint Extension Stems
+
+## Status
+Right now, the project is focusd on keycaps for 10x10 nav switches and extension stems for trackpoints. I'm using this [10x10 MX adapter](https://www.thingiverse.com/thing:3958026). MX Adapters for other switches are on the TODO.
+
+## Usage
+
+First, edit `settings.scad` to select a `stem_model` and `keycap_style` from among those available in `stems/` and `keycaps/` respectively. Edit others settings as appropriate, the main one of interest is `effective_height`; measuring the height of adjacent keys from the switch plate will provide a good starting place. All distances are in millimeters.
+
+Next, run `make update`. This is necessary anytime you edit `stem_model` or `keycap_style` because openscad anly allows string literals in imports, so we import a symlink, maintained by `make`, that points to the appropiate files. You will also need to manually initiate a preview or render once in any running openscad window as it doesn't watch the symlinks for changes.
+
+You can then open the the stem in openscad to look at the result, or `openscad final.scad` to see the high quality render (may take several minutes to complete). If you are happy with the result you can use export, or run `make things/<MyStem>.stl` to generate an `.stl` for slicing. Any name of the form `things/*.stl` will render the cap specified in the settings, so its easy to try out a few different settings.
 
 
-## SKQU - The Classic 10x10 mm 5-way Nav Switch
+## Comparison of Supported Nav Switches
 
-**[r/ErgoMechKeyboards](https://www.reddit.com/r/ErgoMechKeyboards/)** has coalesced around these, particularly due to the excellent modelling work and infographic by *[u/HellMoneyWarriors](https://www.reddit.com/user/hellmoneywarriors/)* found [here on thingiverse](https://www.thingiverse.com/thing:3958026), through-hole contacts, and easy availability from [Adafruit](https://www.adafruit.com/product/504) and others. Turns out these are all roughly the same regardless of manufacturer, clones of an obsoleted ALPS part, SKQU.
+### SKQU - The Classic 10x10 mm 5-way Nav Switch
+
+**[r/ErgoMechKeyboards](https://www.reddit.com/r/ErgoMechKeyboards/)** has coalesced around these, particularly due to the excellent modelling work and infographic by *[u/HellMoneyWarriors](https://www.reddit.com/user/hellmoneywarriors/)* found [here on thingiverse](https://www.thingiverse.com/thing:3958026), through-hole contacts, and easy availability from [Adafruit](https://www.adafruit.com/product/504) and others. Turns out these are all roughly the same regardless of manufacturer; clones of an obsoleted ALPS part, SKQU.
 
 #### Wiring
 There is one pin for each of the 5 switches and one common pin.
@@ -22,7 +35,7 @@ At roughly 160 gf depending on vendor, more than triple the regular keyswitches 
 
 
 
-## SKRH - The Replacement
+### SKRH - The Replacement
 
 The compact ALPS SKRH family is the manufacturer recommended replacement for the obsoleted SKQU. Longer operating life, lower operating force and smaller footprint should all make this switch an obvious improvement. Unlike the SKQU it doesn't sit flat, but has a protrusion under the stem and optional guide bosses depending on the part number.
 
@@ -37,7 +50,7 @@ This is a surface mount part, so soldering may be more challenging. The pinout i
 
 
 
-## RKJXS - The 8-way Upgrade
+### RKJXS - The 8-way Upgrade
 the ALPS RKJXS
 
 #### Operating Force

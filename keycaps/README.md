@@ -1,0 +1,11 @@
+# API and Guidelines for Keycaps
+
+All keycaps must define `module cap()` which provides the object to be placed on the stem, and `function height_offset()` which is used to report the height of the part of the keycap the finger rests on. This is used to adjust the length of the stem for different caps so the `effective_height` of the finger from the base of the key is consistent.
+
+It is recommended to define the object with a unique `module` name and then define a generic `module cap()` that wraps this unique object. That way it is possible to use the keycap for other purposes, such as using the trackpoint cap to also cut the mounting hole in a trackpoint stem. In addition, the unique object should not have `auto_chamfer`ing applied (and manual chamfer, if supported, should be controlled by a parameter: `chamfer=false`). This way the object can be used to construct other objects. which may then be chamfered as a finishing step. `auto_chamfer`ing should only be applied within `module cap()`.
+
+Keycaps should also invoke the cap in the global scope so a preview of the model is visible when opening in openscad. Stems import keycaps with the `use <...>;` directive, so these invocations are ignored. The recommended invocation is `cap($fn=12);` which passes the implicit parameter `$fn` so that circles are more circular and not hexagons. `.stl` is not a vector format and has no primitive for curves. Instead these features are rendered as a series of line segments. `12` is a compromise for serviceable renders, without significant render overhead, especially for caps supporting auto-chamfering via `minkowski()`. Feel free to lower this value if the render delay is bothersome.
+
+It is very important not to define `$fn` in the global scope or set it in any sub-invocations as does not seem to be overrideable and we use a much higher value for the final, print-quality render.
+
+Keycap filenames may contain a `-` to designate a variant such as `trackpoint-lp.scad` vs `trackpoint-original.scad`, but should not contain an `_`. Camelcase names, e.g. `TrackPoint.scad` are acceptable if you are worried about distinguishing separate words, as long as it is used uniformly among variants.
