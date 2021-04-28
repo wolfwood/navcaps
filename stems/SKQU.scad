@@ -4,14 +4,16 @@ use <../include/keycap.scad>;
 
 stemdia = 6.5;
 switch_stem_height = 8;
-switch_stem_base = 4.5;
+switch_stem_base = 3.5;
 switch_stem_clearance = .5;
 
 switch_offset = switch_stem_base + switch_stem_clearance;
 holedepth = switch_stem_height - switch_offset;
 
 stemheight = effective_height - height_offset() - switch_offset;
-holeside = 3.2;
+holeside_raw = 3.2;
+// adjust for FDM imprecision
+holeside = holeside_raw + 0.1;
 
 
 module stemouter() {
