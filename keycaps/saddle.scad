@@ -4,11 +4,12 @@
 
 include <../settings.scad>;
 
+thumbdeflection = 15;
+saddle_sheet = false;
 
 cham_sphere_dia = auto_chamfer() ? minimum_thickness : 0;
-thumbthickness = minimum_thickness - cham_sphere_dia;
+thumbthickness = (saddle_sheet ? (minimum_thickness / cos(thumbdeflection)) : minimum_thickness) - cham_sphere_dia;
 thumbdia = total_width - cham_sphere_dia;
-thumbdeflection = 15;
 
 
 // subtractive approach to 'carve' a saddle cap
@@ -38,7 +39,7 @@ spacer=tan(thumbdeflection)*panel_width;
 offset=panel_width/2;
 depth= thumbthickness+(2*spacer);
 
-function height_offset() = minimum_thickness + spacer;
+function height_offset() = minimum_thickness + (saddle_sheet ? 0 : spacer);
 
 module subtractivecap(chamfer=false){
   //translate([0,0,-spacer])
@@ -107,16 +108,31 @@ module subtractivecap(chamfer=false){
   }
 }
 
-//subtractivecap(false);
+module saddle_sheet() {
+  translate([0,0,-spacer]) difference() {
+    subtractivecap(false);
+    translate([0,0,-thumbthickness]) subtractivecap();
+  }
+}
 
 module cap() {
   if (auto_chamfer()) {
     minkowski(){
-      subtractivecap(false);
+      if (saddle_sheet) {
+	saddle_sheet();
+      }else{
+	subtractivecap(false);
+      }
+      // sphere is off-center so we don't grow in the -z direction and the cap stays positioned with the bottom on the origin
       translate([0,0,cham_sphere_dia/2]) sphere(d=cham_sphere_dia);
     }
   } else {
-    subtractivecap(manual_chamfer());
+      if (saddle_sheet) {
+	// XXX: implement manual chamfer?
+	saddle_sheet();
+      }else{
+	subtractivecap(manual_chamfer());
+      }
   }
 }
 
