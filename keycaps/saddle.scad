@@ -12,8 +12,6 @@ thumbthickness = (saddle_sheet ? (minimum_thickness / cos(thumbdeflection)) : mi
 thumbdia = total_width - cham_sphere_dia;
 
 
-// subtractive approach to 'carve' a saddle cap
-
 module chamfercutter(arc=360/8, rotation=[0,0,0], center=true){
   //radius = (totalwidth/2)-(thumbthickness/2);
 
@@ -41,6 +39,7 @@ depth= thumbthickness+(2*spacer);
 
 function height_offset() = minimum_thickness + (saddle_sheet ? 0 : spacer);
 
+// subtractive approach to 'carve' a saddle cap
 module subtractivecap(chamfer=false){
   //translate([0,0,-spacer])
   difference() {
@@ -137,23 +136,3 @@ module cap() {
 }
 
 cap($fn=12);
-
-//translate([0,0,spacer+thumbthickness]) rotate([0,thumbdeflection,0]) chamfercutter();
-//translate([0,0,thumbthickness])  rotate([0,-thumbdeflection,90]) chamfercutter(41);
-//translate([0,0,thumbthickness]) rotate([0,-thumbdeflection,90]) chamfercutter(41);
-//translate([0,0,thumbthickness]) mirror([0,1,0]) rotate([0,-thumbdeflection,90]) chamfercutter(41);
-/*rotate([0,0,-thumbdeflection]) translate([((1/cos(20))*totalwidth/2) -(thumbthickness/2),0,0]) difference(){
-    square(thumbthickness);
-    circle(d=thumbthickness);
-    };*/
-//translate([0,0,spacer+thumbthickness]) chamfercutter(41,[0,-thumbdeflection,0]);
-//chamfercutter(41,[0,-thumbdeflection,0]);
-//radius = ((1/cos(20))*totalwidth/2) -(thumbthickness/2);
-/*rotate_extrude(angle=arc) {
-     translate([radius-1,0,0]) difference(){
-      square(thumbthickness);
-      translate([-1,0,0]) rotate([0,0,-20]) translate([1,0,0]) circle(d=thumbthickness);
-    }
-*/
-//rotate([0,0,-20]) translate([1,0,0]) circle(d=thumbthickness);
-//translate([0,0,thumbthickness/2]) mirror([0,0,1]) chamfercutter(360);
