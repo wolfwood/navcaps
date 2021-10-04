@@ -60,7 +60,7 @@ At roughly 160 gf depending on vendor, more than triple the regular keyswitches 
 The compact ALPS SKRH family is the manufacturer recommended replacement for the obsoleted SKQU. Longer operating life, lower operating force and smaller footprint should all make this switch an obvious improvement. Unlike the SKQU it doesn't sit flat, but has a protrusion under the stem and optional guide bosses depending on the part number.
 
 #### Wiring
-This is a surface mount part, so soldering may be more challenging, but I was able to do it. Put flux on the contacts and tin both the wires and the contacts before attempting to solder. Keep wires very short to make sure the solder joints wont collide with the MX adapter.
+This is a surface mount part, so soldering may be more challenging, but I was able to do it. Put flux on the contacts and tin both the wires and the contacts before attempting to solder. Keep wires very short to make sure the solder joints won't collide with the MX adapter.
 
 The pinout is not the identical to the SKQU, but there are still 6 contacts.
 
@@ -78,7 +78,7 @@ the ALPS RKJXS
 #### Wiring
 This is a surface mount part, so soldering may be more challenging.
 
-This switch has 6 contacts, ignoring the 2 `E` terminals which are not electrically connected. However, with this switch any activation connects the `P` (Push) and `C` (Common) contacts, as well as 1-2 directional contacts if pushed in a cardinal direction or diagonal.  This means that the `P` contact cannot be used alone to detect a push as with the previous 2 switches. Instead either hardware or software must evaluate all the pins witht he foloowing expression: `Push = AND(P, NOR(1, 2, 3, 4))`.
+This switch has 6 contacts, ignoring the 2 `E` terminals which are not electrically connected. However, with this switch any activation connects the `P` (Push) and `C` (Common) contacts, as well as 1-2 directional contacts if pushed in a cardinal direction or diagonal.  This means that the `P` contact cannot be used alone to detect a push as with the previous 2 switches. Instead, either hardware or software must evaluate all the pins with the following expression: `Push = AND(P, NOR(1, 2, 3, 4))`.
 
 #### Operating Force
 0.8±0.5 N at < 4.15 mm stem height (4.45 mm minus ??? mm to center of rotation; must be at least 0.3 mm since that is the travel of the push button), reported.<br>
