@@ -1,11 +1,11 @@
 # Navigation Switch Key-Caps and MX Adapters and Trackpoint Extension Stems
 
 ## Status
-Right now, the project has functional MX adapters, and stems for the SKQU and SKRH nav switches described below, and 'keycaps' for using a trackpoint rubber cap. other keycaps are a work in progress.
+Right now, the project has functional MX adapters and stems that fit the SKQU and SKRH nav switches described below, and 'keycaps' for using a trackpoint rubber cap. other keycaps are a work in progress.
 
-The RKJXS adapter (and stem) exist but are not quite useable in current form. The adapter in particular is challenging because the switch is bery large and the adapter walls become very narrow, to the point that the slicer ignores them.
+The RKJXS adapter (and stem) exist but are not quite useable in current form. The adapter in particular is challenging because the switch is very large and the adapter walls become very narrow, to the point that the slicer ignores them.
 
-The low profile trackpoint (trackpoint-lp-square) stem extension is a work in progress, as I've been having difficulty obtaining a press-fit that will not rock on at least one axis.  Your best bet is probably using [](series.scad) to print a variety of sizes at once and possibly tweaking the corner cutouts if you see rounding of the corners that interferes with insertion.
+The low profile trackpoint (trackpoint-lp-square) stem extension is a work in progress, as I've been having difficulty obtaining a press-fit that will not rock on at least one axis.  Your best bet is probably using [series.scad](series.scad) to print a variety of sizes at once and possibly tweaking the corner cutouts if you see rounding of the corners that interferes with insertion (or if the corner cutouts are too large and you get rounding of the sides of the hole).
 
 ## Usage
 
@@ -18,7 +18,7 @@ You can then open the the stem in openscad to look at the result, or `openscad f
 
 ## Printer Settings
 
-I have only used FDM machine with these models so far. [](stems/SKRH.scad) has some specific recommendations but here's some tips:
+I have only used FDM machine with these models so far. [stems/SKRH.scad](stems/SKRH.scad) has some specific recommendations but here's some general tips:
 
 * print keycaps at a 45 degree angle for a nicer surface against your finger (this may make the stem fit against the switch worse)
 
@@ -30,7 +30,7 @@ I have only used FDM machine with these models so far. [](stems/SKRH.scad) has s
 
 * don't decrease layer height expecting better prints, X-Y accuracy isn't dependent on layer height, and bridges of thinner layers sag more, plugging up the switch hole in a stem
 
-* trackpoint stem extensions may get melty toward the top, print several at once so the hot end moves far enough away for each layer to cool before the next (this is a great time to experiment with several sizes at once, ala [](series.scad))
+* trackpoint stem extensions may get melty toward the top, print several at once so the hot end moves far enough away for each layer to cool before the next (this is a great time to experiment with several sizes at once, ala [series.scad](series.scad))
 
 ## Comparison of Supported Nav Switches
 
