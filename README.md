@@ -5,7 +5,7 @@ Right now, the project has functional MX adapters, and stems for the SKQU and SK
 
 The RKJXS adapter (and stem) exist but are not quite useable in current form. The adapter in particular is challenging because the switch is bery large and the adapter walls become very narrow, to the point that the slicer ignores them.
 
-The low profile (trackpoint-lp) stem extension is a work in progress, as I've been having difficulty obtaining a press-fit that will not rock on at least one axis.  Your best bet is probably using [](series.scad) to print a variety of sizes at once and possibly tweaking the corner cutouts if you see rounding of the corners that interferes with insertion.
+The low profile trackpoint (trackpoint-lp-square) stem extension is a work in progress, as I've been having difficulty obtaining a press-fit that will not rock on at least one axis.  Your best bet is probably using [](series.scad) to print a variety of sizes at once and possibly tweaking the corner cutouts if you see rounding of the corners that interferes with insertion.
 
 ## Usage
 
