@@ -1,7 +1,11 @@
 # Navigation Switch Key-Caps and MX Adapters and Trackpoint Extension Stems
 
 ## Status
-Right now, the project is focusd on keycaps for 10x10 nav switches and extension stems for trackpoints. I'm using this [10x10 MX adapter](https://www.thingiverse.com/thing:3958026). MX Adapters for other switches are on the TODO.
+Right now, the project has functional MX adapters, and stems for the SKQU and SKRH nav switches described below, and 'keycaps' for using a trackpoint rubber cap. other keycaps are a work in progress.
+
+The RKJXS adapter (and stem) exist but are not quite useable in current form. The adapter in particular is challenging because the switch is bery large and the adapter walls become very narrow, to the point that the slicer ignores them.
+
+The low profile (trackpoint-lp) stem extension is a work in progress, as I've been having difficulty obtaining a press-fit that will not rock on at least one axis.  Your best bet is probably using [](series.scad) to print a variety of sizes at once and possibly tweaking the corner cutouts if you see rounding of the corners that interferes with insertion.
 
 ## Usage
 
@@ -11,6 +15,22 @@ Next, run `make update`. This is necessary anytime you edit `stem_model` or `key
 
 You can then open the the stem in openscad to look at the result, or `openscad final.scad` to see the high quality render (may take several minutes to complete). If you are happy with the result you can use export, or run `make things/<MyStem>.stl` to generate an `.stl` for slicing. Any name of the form `things/*.stl` will render the cap specified in the settings, so its easy to try out a few different settings.
 
+
+## Printer Settings
+
+I have only used FDM machine with these models so far. [](stems/SKRH.scad) has some specific recommendations but here's some tips:
+
+* print keycaps at a 45 degree angle for a nicer surface against your finger (this may make the stem fit against the switch worse)
+
+* print "external perimeters first" to get better dimensional accuracy for both keycap stems and MX adapters
+
+* disable supports for bridging so the hole for the switch stem isn't plugged by support material
+
+* you might get a better fit against the switch printing upside down (no elephant foot on the first layers making things too tight)
+
+* don't decrease layer height expecting better prints, X-Y accuracy isn't dependent on layer height, and bridges of thinner layers sag more, plugging up the switch hole in a stem
+
+* trackpoint stem extensions may get melty toward the top, print several at once so the hot end moves far enough away for each layer to cool before the next (this is a great time to experiment with several sizes at once, ala [](series.scad))
 
 ## Comparison of Supported Nav Switches
 
@@ -40,11 +60,13 @@ At roughly 160 gf depending on vendor, more than triple the regular keyswitches 
 The compact ALPS SKRH family is the manufacturer recommended replacement for the obsoleted SKQU. Longer operating life, lower operating force and smaller footprint should all make this switch an obvious improvement. Unlike the SKQU it doesn't sit flat, but has a protrusion under the stem and optional guide bosses depending on the part number.
 
 #### Wiring
-This is a surface mount part, so soldering may be more challenging. The pinout is not the identical to the SKQU, but there are still 6 contacts.
+This is a surface mount part, so soldering may be more challenging, but I was able to do it. Put flux on the contacts and tin both the wires and the contacts before attempting to solder. Keep wires very short to make sure the solder joints wont collide with the MX adapter.
+
+The pinout is not the identical to the SKQU, but there are still 6 contacts.
 
 #### Operating Force
-1.2±0.69 N operating force at 4.51 mm stem height (5 mm minus .49 mm to center of stem rotation), reported.<br>
-**55 gf·cm** (**5.4 mN·m**) calculated normalized force.
+1.2±0.69 N operating force measured at 4.3 mm from base of switch, meaning 3.71 mm stem height ( 4.3 mm minus .49 mm to center of stem rotation), reported.<br>
+**46 gf·cm** (**4.5 mN·m**) calculated normalized force.
 
 ### [Datasheet](https://tech.alpsalpine.com/prod/e/pdf/multicontrol/switch/skrh/skrh.pdf)
 
@@ -53,8 +75,13 @@ This is a surface mount part, so soldering may be more challenging. The pinout i
 ### RKJXS - The 8-way Upgrade
 the ALPS RKJXS
 
+#### Wiring
+This is a surface mount part, so soldering may be more challenging.
+
+This switch has 6 contacts, ignoring the 2 `E` terminals which are not electrically connected. However, with this switch any activation connects the `P` (Push) and `C` (Common) contacts, as well as 1-2 directional contacts if pushed in a cardinal direction or diagonal.  This means that the `P` contact cannot be used alone to detect a push as with the previous 2 switches. Instead either hardware or software must evaluate all the pins witht he foloowing expression: `Push = AND(P, NOR(1, 2, 3, 4))`.
+
 #### Operating Force
-0.8±0.5 N at ??? stem height (4.45 mm minus ??? mm to center of rotation), reported.<br>
-**< 36 gf·cm** (**< 3.5 mN·m**) calculated normalized force.
+0.8±0.5 N at < 4.15 mm stem height (4.45 mm minus ??? mm to center of rotation; must be at least 0.3 mm since that is the travel of the push button), reported.<br>
+**< 34 gf·cm** (**< 3.3 mN·m**) calculated normalized force.
 
 ### [Datasheet](https://tech.alpsalpine.com/prod/e/pdf/multicontrol/switch/rkjxs/rkjxs.pdf)

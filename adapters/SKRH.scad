@@ -10,13 +10,12 @@ vertical_slop = 0.1;
 switch_inner_slop = 0.0;
 switch_corner_inner_slop = 0.05;
 boss_inner_slop = 0.05;
-//outer_slop = 0.2;
 
 include <util.scad>;
 include <../settings.scad>;
 include <../common/util.scad>
 
-/* my switch measurments are a bit tighter than the spec sheet says, the slop factor will make up the difference,
+/* my switch measurments are a bit tighter than the spec sheet says, the slop factor will make up some of the difference,
  * but we want a tight fit to hold the switch in place so this may need to be tuned
  */
 switch_side = 7.4; // 'x' in the dimension table of the data sheet says 7.45 / 7.5 , I measured 7.4

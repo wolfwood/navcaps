@@ -1,22 +1,22 @@
 include <../settings.scad>;
 use <../include/keycap.scad>;
 
-inner_slop = .1;
-
 stemdia = 6.6;
-switch_stem_height = 8;
-switch_stem_base = 3.5;
-switch_stem_clearance = .5;
+switch_stem_base = 2.9 - 2.3; // from datasheet
+switch_stem_height = 4.45 - 2.3; // from datasheet
+
+switch_stem_clearance = 0.3 + 2*vertical_slop; // from datasheet
 
 switch_offset = switch_stem_base + switch_stem_clearance;
 holedepth = switch_stem_height - switch_offset;
 
 stemheight = effective_height - height_offset() - switch_offset;
-holeside_raw = 3.2;
+holeside_raw = 2.0; // from datasheet
+
 // adjust for FDM imprecision
 holeside = holeside_raw + inner_slop;
 
-assert(stemheight >= thickness, str(stemheight, " is less than ", thickness));
+//assert(stemheight >= holedepth, str(stemheight, " is less than ", holedepth));
 
 module stemouter() {
   cylinder(stemheight, d=stemdia);
@@ -30,7 +30,6 @@ module stem() {
 }
 
 module assembled() {
-  // NOTE - this allows the hole to extend into the keycap
   difference() {
     union() {
       stemouter();
@@ -44,5 +43,5 @@ module assembled() {
 // preview
 translate([0,0,switch_offset]) assembled($fn=24);
 
-// see README for the gf*mm calcuation from the SQKU datasheet values
-echo(str("  Estimated operating force is ", 1410 / effective_height, " gf"));
+// see README for the gf*mm calculation from the RKJXS datasheet values
+echo(str("  Estimated operating force is ", 550 / effective_height, " gf"));
