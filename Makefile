@@ -14,6 +14,9 @@ include/keycap.scad : keycaps/${KEYCAP}.scad settings.scad
 include/stem.scad : stems/${STEM}.scad settings.scad
 	ln -srf $< $@
 
+things/series.stl : series.scad settings.scad include/keycap.scad include/stem.scad
+	openscad -q --hardwarnings --render -o $@ $<
+
 things/%.stl : final.scad settings.scad include/keycap.scad include/stem.scad
 	openscad -q --hardwarnings --render -o $@ $<
 
