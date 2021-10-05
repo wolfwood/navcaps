@@ -11,24 +11,24 @@ The low profile trackpoint (trackpoint-lp-square) stem extension is a work in pr
 
 First, edit `settings.scad` to select a `stem_model` and `keycap_style` from among those available in `stems/` and `keycaps/` respectively. Edit others settings as appropriate, the main one of interest is `effective_height`; measuring the height of adjacent keys from the switch plate will provide a good starting place. All distances are in millimeters.
 
-Next, run `make update`. This is necessary anytime you edit `stem_model` or `keycap_style` because openscad anly allows string literals in imports, so we import a symlink, maintained by `make`, that points to the appropiate files. You will also need to manually initiate a preview or render once in any running openscad window as it doesn't watch the symlinks for changes.
+Next, run `make update`. This is necessary anytime you edit `stem_model` or `keycap_style` because openscad only allows string literals in imports, so we import a symlink, maintained by `make`, that points to the appropiate files. You will also need to manually initiate a preview or render once in any running openscad window as it doesn't watch the symlinks for changes.
 
 You can then open the the stem in openscad to look at the result, or `openscad final.scad` to see the high quality render (may take several minutes to complete). If you are happy with the result you can use export, or run `make things/<MyStem>.stl` to generate an `.stl` for slicing. Any name of the form `things/*.stl` will render the cap specified in the settings, so its easy to try out a few different settings.
 
 
 ## Printer Settings
 
-I have only used FDM machine with these models so far. [stems/SKRH.scad](stems/SKRH.scad) has some specific recommendations but here's some general tips:
+I have only used FDM prints to produce these models so far. SLA results could be wildly different. [stems/SKRH.scad](stems/SKRH.scad) has some specific recommendations but here's some general tips:
 
 * print keycaps at a 45 degree angle for a nicer surface against your finger (this may make the stem fit against the switch worse)
 
 * print "external perimeters first" to get better dimensional accuracy for both keycap stems and MX adapters
 
-* disable supports for bridging so the hole for the switch stem isn't plugged by support material
+* disable supports for bridging, so that the hole for the switch stem isn't plugged by support material
 
-* you might get a better fit against the switch printing upside down (no elephant foot on the first layers making things too tight)
+* you might get a better fit against the switch printing upside down (no elephant foot on the first few layers making things too tight)
 
-* don't decrease layer height expecting better prints, X-Y accuracy isn't dependent on layer height, and bridges of thinner layers sag more, plugging up the switch hole in a stem
+* don't decrease layer height expecting prints to better fit the switch stem; X-Y accuracy isn't dependent on layer height, and bridges of thinner layers sag more, plugging up the switch hole in a stem
 
 * trackpoint stem extensions may get melty toward the top, print several at once so the hot end moves far enough away for each layer to cool before the next (this is a great time to experiment with several sizes at once, ala [series.scad](series.scad))
 
