@@ -1,12 +1,15 @@
 include <settings.scad>;
 use <include/stem.scad>;
 
+//translate([-10,-10,0]) assembled($fn=120, $inner_slop_x=-.05, $inner_slop_y=-.05);
+//assembled($fn=120);
+//translate([10,10,0]) assembled($fn=120, $inner_slop_x=.05, $inner_slop_y=.05);
 
-x_range = [-2:0];
+x_range = [-10:0];
 y_range = x_range;
 
-spacing= 8;
-tolerance = .025;
+spacing= 7;
+tolerance = .01;
 
 combine_tolerances = true;
 
@@ -20,4 +23,4 @@ if (combine_tolerances) {
       translate([i*spacing, j*spacing,0]) assembled($fn=120, $inner_slop_x=i*tolerance, $inner_slop_y=j*tolerance);
     }
   }
- }
+}

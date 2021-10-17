@@ -6,8 +6,8 @@
 include <../settings.scad>;
 use <../common/util.scad>
 
-$inner_slop_x = 0.0;
-$inner_slop_y = -0.0;
+//$inner_slop_x = 0.0;
+//$inner_slop_y = -0.0;
 outer_slop = 0.1;
 print_width = .4;
 layer_height=.2;

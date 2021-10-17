@@ -21,15 +21,17 @@ switch_stem_clearance = 0.3; // from datasheet
 switch_offset = switch_stem_base + switch_stem_clearance;
 holedepth = switch_stem_height - switch_offset + vertical_slop;
 
-echo(holedepth);
-
 stemheight = effective_height - height_offset() - switch_offset;
 holeside_raw = 1.95; // from datasheet
 
 // adjust for FDM imprecision
 holeside = holeside_raw + inner_slop;
 
-//assert(stemheight >= holedepth, str(stemheight, " is less than ", holedepth));
+if (keycap_style == "trackpoint-lp") {
+  assert(stemheight >= holedepth, str("stem height ", stemheight, " must be at least ", holedepth, ", the depth of the switch stem hole"));
+} else {
+  assert(stemheight >= minimum_thickness, str("stem height ", stemheight, " is less than the minimum thickness ", minimum_thickness));
+}
 
 module stemouter() {
   cylinder(stemheight, d=stemdia);

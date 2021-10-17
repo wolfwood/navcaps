@@ -13,6 +13,7 @@ switch_offset = switch_stem_base + switch_stem_clearance;
 
 stemheight = effective_height - height_offset() - switch_offset;
 
+assert(stemheight >= 2.5 + minimum_thickness);
 
 module stemouter() {
   cylinder(stemheight, d=stemdia);

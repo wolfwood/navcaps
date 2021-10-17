@@ -25,13 +25,19 @@ switch_boss_dia = 1.05; // PC Board Mounting diagram suggests a 1.05 mm and a .7
 switch_boss_height = 0.5; // diagram says 0.5
 switch_boss_separation = 3.8;
 
+footer=.2;
+blank_height = 4+footer;
+
 // good enough if you want to solder the switch with the wires already passed through the adapter
 module basic_SKRH_adapter() {
   difference() {
     // the shape that fits the switch plate hole
-    mx_blank();
-    blank_height = 4;
-    blank_lip = 1.2;
+    mx_blank(footer);
+
+    /* top of adapter sits 1.2 mm above plate, but we may or may not actually want
+       to sit the switch at exactly plate level */
+    //blank_lip = 1.2;
+    blank_lip = 0.6;
 
     pocket_height = switch_height + vertical_slop + blank_lip;
     switch_floor = blank_height - pocket_height;
@@ -49,7 +55,7 @@ module basic_SKRH_adapter() {
     rotational_clone(2) rotate([0,0,45])  translate([switch_boss_separation/2,0,switch_floor]) cube([switch_boss_dia+boss_inner_slop,switch_boss_dia+boss_inner_slop,2*(switch_boss_height+vertical_slop)], center=true);
 
     // holes to expose contacts and allow wires to pass
-    rotational_clone(2) rotate([0,0,-45])  translate([switch_side/2,0,2])  cube([2,4.7,blank_height+vertical_slop*2], true);
+    rotational_clone(2) rotate([0,0,-45])  translate([switch_side/2,0,blank_height/2])  cube([2,4.7,blank_height+vertical_slop*2], true);
 
     // scoring to make flexing the holder easier - not needed now that adapter is thinner
     //translate([0,0,switch_floor]) rotate(45) rotate([90,0,0]) rotate([0,0,45]) cube([.5,.5,6], true);
@@ -60,7 +66,7 @@ module basic_SKRH_adapter() {
 module SKRH_adapter() {
   difference() {
     basic_SKRH_adapter();
-    rotational_clone(2) translate([-6,2.16,2]) cube([5,2, 4+vertical_slop*2], true);
+    rotational_clone(2) translate([-6,2.16,blank_height/2]) cube([5,2, blank_height+vertical_slop*2], true);
   }
 }
 

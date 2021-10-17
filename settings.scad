@@ -5,6 +5,7 @@
 /* height of the part the finger rests on, doesn't exclude higher protrusions,
        eg. the saddle keycap rises on either side of the thumb for leverage */
 effective_height=16+5;
+//effective_height=11;
 
 // maximum width in any direction, strict limit to prevent collision with adjacent keycaps
 total_width=16;
@@ -25,7 +26,15 @@ keycap_rotation = [0,0,0];
 
 
 stem_model = "trackpoint-lp-square";
+//stem_model = "SKRH";
 
+
+// slop factors for imprecision in the printing process
+/*
+vertical_slop = 0.1;
+inner_slop = 0.4;
+outer_slop = 0.2;
+*/
 
 /* -----------------------------------------------------------------------
  *  Do Not Edit - this machinery is consistent regardless of above values

@@ -3,12 +3,14 @@ use <../keycaps/trackpoint-lp.scad>;
 // must come second so it overrides cap()
 use <../include/keycap.scad>;
 
+use <../common/util.scad>;
+
 print_width = .4;
 
-extra_layers =4*print_width*2;
+extra_layers = 4*print_width*2;
 
 switch_stem_base = 0;
-switch_stem_clearance = 0.001; //.2;
+switch_stem_clearance = 0.2; //.2;
 
 switch_offset = switch_stem_base + switch_stem_clearance;
 
@@ -17,7 +19,7 @@ stemheight = effective_height - height_offset() - switch_offset;
 
 module stemouter() {
   topdia = 4;
-  bottom_h=4;
+  bottom_h=3.99;
   top_h = stemheight-bottom_h;
   difference() {
     translate([0,0,top_h/2+bottom_h]) cube([topdia,topdia,top_h],true);
@@ -47,10 +49,32 @@ module stem() {
   }
 }
 
+module clampify() {
+  washerdia=4;
+  nutdia=3.4;
+
+  tabwidth=5;
+  tabheight=washerdia;
+  difference(){
+    union() {
+      children();
+      rotational_clone() rotate([0,0,45]) translate([-tabwidth/2,1.5,0]) cube([tabwidth,3,tabheight]);
+    }
+    let(width=.85) {
+      rotational_clone() rotate([0,0,45]) translate([-width/2,-1,-.1]) cube([width,6,tabheight+.11]);
+    }
+
+    rotational_clone() rotate([0,0,45]) translate([0,2.5,tabheight/2]) {
+      rotate([0,90,0]) cylinder(d=2,h=10,center=true);
+      rotational_clone() translate([tabwidth/2,0,0]) rotate([0,90,0]) cylinder(d=tabheight,h=10);
+    }
+  }
+}
+
 module assembled() {
   //difference () {
     union() {
-      stem();
+      clampify() stem();
       translate([0,0,stemheight]) rotate(keycap_rotation) cap();
     }
     //translate([-5,-5,5]) cube([10,10,9]);

@@ -40,8 +40,9 @@ depth= thumbthickness+(2*spacer);
 function height_offset() = minimum_thickness + (saddle_sheet ? 0 : spacer);
 
 // subtractive approach to 'carve' a saddle cap
-module subtractivecap(chamfer=false){
+module subtractivecap(chamfer=false, ridge=false){
   //translate([0,0,-spacer])
+  union () {
   difference() {
     // workpiece
     cylinder(h=depth,d=total_width);
@@ -105,6 +106,8 @@ module subtractivecap(chamfer=false){
       }
       }*/
   }
+  //translate([offset,0,spacer+thumbthickness+cham_sphere_dia-.5]) rotate([90,0,0]) cylinder(h=panel_width+4, d=.5, center=true);
+  }
 }
 
 module saddle_sheet() {
@@ -115,24 +118,32 @@ module saddle_sheet() {
 }
 
 module cap() {
-  if (auto_chamfer()) {
-    minkowski(){
-      if (saddle_sheet) {
-	saddle_sheet();
-      }else{
-	subtractivecap(false);
+  union () {
+    if (auto_chamfer()) {
+      minkowski(){
+	if (saddle_sheet) {
+	  saddle_sheet();
+	}else{
+	  subtractivecap(false);
+	}
+	// sphere is off-center so we don't grow in the -z direction and the cap stays positioned with the bottom on the origin
+	translate([0,0,cham_sphere_dia/2]) sphere(d=cham_sphere_dia);
       }
-      // sphere is off-center so we don't grow in the -z direction and the cap stays positioned with the bottom on the origin
-      translate([0,0,cham_sphere_dia/2]) sphere(d=cham_sphere_dia);
-    }
-  } else {
+    } else {
       if (saddle_sheet) {
 	// XXX: implement manual chamfer?
 	saddle_sheet();
       }else{
 	subtractivecap(manual_chamfer());
       }
+    }
+
+    if (saddle_sheet) {
+      translate([-(offset+.1),0,thumbthickness+cham_sphere_dia-.2]) rotate([90,0,0]) cylinder(h=panel_width+4, d=.75, center=true);
+    } else {
+      translate([-(offset+.1),0,spacer+thumbthickness+cham_sphere_dia-.2]) rotate([90,0,0]) cylinder(h=panel_width+4, d=.75, center=true);
+    }
   }
 }
 
-cap($fn=12);
+cap($fn=48);
