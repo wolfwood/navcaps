@@ -20,8 +20,8 @@ side = 2.5;
 raw_height=2.5;
 function height(stem=true) = (stem?first_layer:0) + floor((raw_height-(stem?first_layer:0))/layer_height)*layer_height;
 
-function adjusted_side_x(stem=true) = stem ? side + $inner_slop_x : side - outer_slop;
-function adjusted_side_y(stem=true) = stem ? side + $inner_slop_y : side - outer_slop;
+function adjusted_side_x(stem=true) = stem ? side + (is_undef($inner_slop_x) ? 0 : $inner_slop_x) : side - outer_slop;
+function adjusted_side_y(stem=true) = stem ? side + (is_undef($inner_slop_y) ? 0 : $inner_slop_y) : side - outer_slop;
 // this alias is for using when making a hole for a stem
 module cap_tplp(stem=true) {
   //adjusted_side = adjusted_side();

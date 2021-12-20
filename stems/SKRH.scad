@@ -25,7 +25,8 @@ stemheight = effective_height - height_offset() - switch_offset;
 holeside_raw = 1.95; // from datasheet
 
 // adjust for FDM imprecision
-holeside = holeside_raw + inner_slop;
+function holeside_x() = holeside_raw + inner_slop + (is_undef($inner_slop_x) ? 0 : $inner_slop_x);
+function holeside_y() = holeside_raw + inner_slop + (is_undef($inner_slop_y) ? 0 : $inner_slop_y);
 
 if (keycap_style == "trackpoint-lp") {
   assert(stemheight >= holedepth, str("stem height ", stemheight, " must be at least ", holedepth, ", the depth of the switch stem hole"));
@@ -40,7 +41,7 @@ module stemouter() {
 module stem() {
   difference() {
     stemouter();
-    translate([0,0,holedepth/2]) cube([holeside,holeside,holedepth], true);
+    translate([0,0,holedepth/2]) cube([holeside_x(),holeside_y(),holedepth], true);
   }
 }
 
@@ -50,7 +51,7 @@ module assembled() {
       stemouter();
       translate([0,0,stemheight]) rotate(keycap_rotation) cap();
     }
-    translate([0,0,holedepth/2]) cube([holeside,holeside,holedepth], true);
+    translate([0,0,holedepth/2]) cube([holeside_x(),holeside_y(),holedepth], true);
   }
 }
 
