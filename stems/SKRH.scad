@@ -12,7 +12,7 @@ vertical_slop = 0.4;
 inner_slop = printer == "prusa" ? .015 : "cr10" ? .25 : 0;
 //outer_slop = 0.2;
 
-stemdia = 6.6;
+stemdia = keycap_style == "bar" || keycap_style == "banana" || keycap_style == "dome" ? minimum_thickness : 6.6;
 switch_stem_base = 3 - 1.85; // from datasheet
 switch_stem_height = 2 + switch_stem_base; // from datasheet
 
@@ -30,12 +30,22 @@ function holeside_y() = holeside_raw + inner_slop + (is_undef($inner_slop_y) ? 0
 
 if (keycap_style == "trackpoint-lp") {
   assert(stemheight >= holedepth, str("stem height ", stemheight, " must be at least ", holedepth, ", the depth of the switch stem hole"));
-} else {
+ } else if(keycap_style != "bar") {
   assert(stemheight >= minimum_thickness, str("stem height ", stemheight, " is less than the minimum thickness ", minimum_thickness));
 }
 
 module stemouter() {
-  cylinder(stemheight, d=stemdia);
+  if ( keycap_rotation.x != 0 || keycap_rotation.y != 0) {
+    //      translate([0,0,stemheight]) sphere(d=stemdia);
+    h = 100;
+    difference() {
+      cylinder(stemheight+h, d=stemdia);
+      translate([0,0,stemheight]) rotate(keycap_rotation) translate([-h,-h,minimum_thickness/2]) cube([2*h,2*h,2*h]);
+    }
+  } else {
+    cylinder(stemheight+minimum_thickness/2, d=stemdia);
+  }
+
 }
 
 module stem() {
