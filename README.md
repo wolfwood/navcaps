@@ -1,11 +1,19 @@
-# Navigation Switch Key-Caps and MX Adapters and Trackpoint Extension Stems
+# Navigation Switch Key-Caps and MX Adapters, and Trackpoint Extension Stems
+
 
 ## Status
-Right now, the project has functional MX adapters and stems that fit the SKQU and SKRH nav switches described below, and 'keycaps' for using a trackpoint rubber cap. other keycaps are a work in progress.
+
+### Navigation Switch Keycap and MX Adapter Status
+Right now, the project has functional MX adapters and stems that fit the SKQU and SKRH nav switches described below, and 'keycaps' for using a trackpoint rubber cap. There are also a variety of purely 3D-printed keycaps, in a variety of shapes: cup, saddle, bar, banana (maybe I should have called it macaroni?), dome and cup with a 'chin' which is meant to be used at an angle with the chin providing extra material to press down/towards the user. Right now I think the trackpoint is the most comfortable.  Everything else should be considered a work in progress but the dome (basically a less-good trackpoint) and banana show the most promise. Sheet versions of the cup and saddle are thinner and less likely to bump into adjacent keys, but the plain versions are cool too.
 
 The RKJXS adapter (and stem) exist but are not quite useable in current form. The adapter in particular is challenging because the switch is very large and the adapter walls become very narrow, to the point that the slicer ignores them.
 
-The low profile trackpoint (trackpoint-lp-square) stem extension is a work in progress, as I've been having difficulty obtaining a press-fit that will not rock on at least one axis.  Your best bet is probably using [series.scad](series.scad) to print a variety of sizes at once and possibly tweaking the corner cutouts if you see rounding of the corners that interferes with insertion (or if the corner cutouts are too large and you get rounding of the sides of the hole).
+
+### Trackpoint Stem Extension Status
+Right now the only recommended model is the  low profile trackpoint clamp stem extension, `stems/trackpoint-lp-clamp`. This fits over the trackpoint stem and then clamps diagonally using 2 M1.6x8 or longer screws, along with appropriate washers, lock washers and nuts. make sure to tune the `vertical_slop` so that you can see the trackpoint stem underneath the clamp (i.e. the clamp is not resting flat on the trackpoint sensor, but instead resting on the top of the trackpoint stem and held off the surface of the sensor). This will help prevent force on the top of the extension of levering the trackpoint stem and braking it off (if this does happen, it is possible to superglue the stem back into place but it should be avoided).
+
+The `stems/trackpoint-lp-square` stem extension is a work in progress, as I've been having difficulty obtaining a press-fit that will not rock on at least one axis. I've stopped working on it as I found, at least with the Sprintek trackpoint modules, **removing a press-fit stem extension can rip the trackpoint stem off of the sensor, so proceed at your own risk!** If you do suffer this fate, you can try supergluing the stem back on. If you are committed to this path, your best bet is probably using [series.scad](series.scad) to print a variety of sizes at once and possibly tweaking the corner cutouts if you see rounding of the corners that interferes with insertion (or if the corner cutouts are too large and you get rounding of the sides of the hole).
+
 
 ## Usage
 
@@ -32,9 +40,12 @@ I have only used FDM prints to produce these models so far. SLA results could be
 
 * trackpoint stem extensions may get melty toward the top, print several at once so the hot end moves far enough away for each layer to cool before the next (this is a great time to experiment with several sizes at once, ala [series.scad](series.scad))
 
+
 ## Comparison of Supported Nav Switches
 
 ### SKQU - The Classic 10x10 mm 5-way Nav Switch
+
+### [Datasheet](https://cdn-shop.adafruit.com/datasheets/SKQUCAA010-ALPS.pdf)
 
 **[r/ErgoMechKeyboards](https://www.reddit.com/r/ErgoMechKeyboards/)** has coalesced around these, particularly due to the excellent modelling work and infographic by *[u/HellMoneyWarriors](https://www.reddit.com/user/hellmoneywarriors/)* found [here on thingiverse](https://www.thingiverse.com/thing:3958026), through-hole contacts, and easy availability from [Adafruit](https://www.adafruit.com/product/504) and others. Turns out these are all roughly the same regardless of manufacturer; clones of an obsoleted ALPS part, SKQU.
 
@@ -51,11 +62,11 @@ At roughly 160 gf depending on vendor, more than triple the regular keyswitches 
 1.57+0.39-0.69 N operating force at 8.77 mm (10 mm minus 1.23 mm to center of stem rotation), reported.<br>
 **141 gf·cm** (**13.8 mN·m**) calculated normalized force (divide value by actual stem length, including internal to the switch, to determine effective force).
 
-### [Datasheet](https://cdn-shop.adafruit.com/datasheets/SKQUCAA010-ALPS.pdf)
-
 
 
 ### SKRH - The Replacement
+
+### [Datasheet](https://tech.alpsalpine.com/prod/e/pdf/multicontrol/switch/skrh/skrh.pdf)
 
 The compact ALPS SKRH family is the manufacturer recommended replacement for the obsoleted SKQU. Longer operating life, lower operating force and smaller footprint should all make this switch an obvious improvement. Unlike the SKQU it doesn't sit flat, but has a protrusion under the stem and optional guide bosses depending on the part number.
 
@@ -68,11 +79,12 @@ The pinout is not the identical to the SKQU, but there are still 6 contacts.
 1.2±0.69 N operating force measured at 4.3 mm from base of switch, meaning 3.71 mm stem height ( 4.3 mm minus .49 mm to center of stem rotation), reported.<br>
 **46 gf·cm** (**4.5 mN·m**) calculated normalized force.
 
-### [Datasheet](https://tech.alpsalpine.com/prod/e/pdf/multicontrol/switch/skrh/skrh.pdf)
-
 
 
 ### RKJXS - The 8-way Upgrade
+
+### [Datasheet](https://tech.alpsalpine.com/prod/e/pdf/multicontrol/switch/rkjxs/rkjxs.pdf)
+
 the ALPS RKJXS
 
 #### Wiring
@@ -83,5 +95,3 @@ This switch has 6 contacts, ignoring the 2 `E` terminals which are not electrica
 #### Operating Force
 0.8±0.5 N at < 4.15 mm stem height (4.45 mm minus ??? mm to center of rotation; must be at least 0.3 mm since that is the travel of the push button), reported.<br>
 **< 34 gf·cm** (**< 3.3 mN·m**) calculated normalized force.
-
-### [Datasheet](https://tech.alpsalpine.com/prod/e/pdf/multicontrol/switch/rkjxs/rkjxs.pdf)

@@ -25,8 +25,7 @@ chamfer_style = "auto";
 keycap_rotation = [0,0,0];
 
 
-stem_model = "trackpoint-lp-square";
-//stem_model = "SKRH";
+stem_model = "trackpoint-lp-clamp";
 
 
 // "cr10 or "prusa" have presets, any other string will use a default tolerance, usually 0
