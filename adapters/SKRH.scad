@@ -5,15 +5,15 @@
  */
 
 
-/* tuned on a Prusa MK3 using .20 mm layer height. supports are helpful but not necessarily required. */
-vertical_slop = 0.1;
-switch_inner_slop = 0.0;
-switch_corner_inner_slop = 0.05;
-boss_inner_slop = 0.05;
-
 include <util.scad>;
 include <../settings.scad>;
 include <../common/util.scad>
+
+/* tuned on a Prusa MK3 using .20 mm layer height. supports are helpful but not necessarily required. */
+vertical_slop = 0.1;
+switch_inner_slop = 0.0;
+switch_corner_inner_slop = printer == "prusa" ? .05 : 0;
+boss_inner_slop = 0.05;
 
 /* my switch measurments are a bit tighter than the spec sheet says, the slop factor will make up some of the difference,
  * but we want a tight fit to hold the switch in place so this may need to be tuned

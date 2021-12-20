@@ -9,7 +9,7 @@ use <../include/keycap.scad>;
  * letting the machine cool somewhat between prints seemed to help.
  */
 vertical_slop = 0.4;
-inner_slop = 0.015;
+inner_slop = printer == "prusa" ? .015 : "cr10" ? .25 : 0;
 //outer_slop = 0.2;
 
 stemdia = 6.6;

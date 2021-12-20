@@ -29,6 +29,9 @@ stem_model = "trackpoint-lp-square";
 //stem_model = "SKRH";
 
 
+// "cr10 or "prusa" have presets, any other string will use a default tolerance, usually 0
+printer = "prusa";
+
 // slop factors for imprecision in the printing process
 /*
 vertical_slop = 0.1;

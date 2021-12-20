@@ -5,6 +5,9 @@ stemdia = 6.6;
 switch_stem_base = 2.9 - 2.3; // from datasheet
 switch_stem_height = 4.45 - 2.3; // from datasheet
 
+vertical_slop = .1;
+inner_slop = printer == "prusa" ? .015 : "cr10" ? .25 : 0;
+
 switch_stem_clearance = 0.3 + 2*vertical_slop; // from datasheet
 
 switch_offset = switch_stem_base + switch_stem_clearance;
