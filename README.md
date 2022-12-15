@@ -71,6 +71,7 @@ At roughly 160 gf depending on vendor, more than triple the regular keyswitches 
 The compact ALPS SKRH family is the manufacturer recommended replacement for the obsoleted SKQU. Longer operating life, lower operating force and smaller footprint should all make this switch an obvious improvement. Unlike the SKQU it doesn't sit flat, but has a protrusion under the stem and optional guide bosses depending on the part number.
 
 #### [Datasheet](https://tech.alpsalpine.com/prod/e/pdf/multicontrol/switch/skrh/skrh.pdf)
+There are [kicad footprints for this switch here](https://github.com/crides/kleeb/tree/master/switch.pretty), although I haven't tested them personally.
 
 #### Wiring
 This is a surface mount part, so soldering may be more challenging, but I was able to do it. Put flux on the contacts and tin both the wires and the contacts before attempting to solder. Keep wires very short to make sure the solder joints won't collide with the MX adapter.
