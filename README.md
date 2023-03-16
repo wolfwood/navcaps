@@ -86,7 +86,7 @@ The pinout is not the identical to the SKQU, but there are still 6 contacts.
 
 ### RKJXS - The 8-way Upgrade
 
-the ALPS RKJXS
+Unfortunateky, the ALPS RKJXS has also been obsoleted.
 
 #### [Datasheet](https://tech.alpsalpine.com/prod/e/pdf/multicontrol/switch/rkjxs/rkjxs.pdf)
 
