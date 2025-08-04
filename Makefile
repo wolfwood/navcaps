@@ -1,13 +1,35 @@
 SCAD=openscad
-#TARGETS=SKQU.stl
-#all: ${TARGETS}
+SCADFLAGS = -q --hardwarnings
+
+# stl or 3mf are most common
+FORMAT = stl
+
+
+MANIFOLD_FEATURE := $(shell $(SCAD) --version --enable manifold > /dev/null 2>&1; echo $$?)
+MANIFOLD_BACKEND := $(shell $(SCAD) --version --backend manifold > /dev/null 2>&1; echo $$?)
+
+ifeq ($(MANIFOLD_BACKEND), 0)
+    SCADFLAGS += --backend manifold
+else
+ifeq ($(MANIFOLD_FEATURE), 0)
+    SCADFLAGS += --enable manifold
+endif
+endif
+
 
 KEYCAP != perl -n -e'/^keycap_style\s*=\s*"(\S+)"/ && print $$1' < settings.scad
 STEM != perl -n -e'/^stem_model\s*=\s*"(\S+)"/ && print $$1' < settings.scad
+LENGTH != perl -n -e'/^effective_height\s*=\s*([\d\.]+)/ && print $$1' < settings.scad
 
-current: things/${STEM}-${KEYCAP}.stl things/${STEM}_mx-adapter.stl
+
+current: update things/${STEM}-${KEYCAP}_${LENGTH}-mm.$(FORMAT)
 
 update: include/keycap.scad include/stem.scad
+
+adapter: things/${STEM}_mx-adapter.$(FORMAT)
+
+series: things/series%.$(FORMAT)
+
 
 include/keycap.scad : keycaps/${KEYCAP}.scad settings.scad
 	ln -srf $< $@
@@ -15,14 +37,14 @@ include/keycap.scad : keycaps/${KEYCAP}.scad settings.scad
 include/stem.scad : stems/${STEM}.scad settings.scad
 	ln -srf $< $@
 
-things/series%.stl : series.scad settings.scad include/keycap.scad include/stem.scad
-	${SCAD} -q --hardwarnings --render -o $@ $<
+things/series%.$(FORMAT): series.scad settings.scad
+	${SCAD} ${SCADFLAGS} --render -o $@ $<
 
-things/%.stl : final.scad settings.scad include/keycap.scad include/stem.scad
-	${SCAD} -q --hardwarnings --render -o $@ $<
+things/%_${LENGTH}-mm.$(FORMAT): final.scad settings.scad
+	${SCAD} ${SCADFLAGS} --render -o $@ $<
 
-things/%_mx-adapter.stl: adapters/%.scad settings.scad adapters/util.scad adapters/mx-adapter.stl
-	${SCAD} -q --hardwarnings --render -o $@ $<
+things/%_mx-adapter.$(FORMAT): adapters/%.scad settings.scad adapters/util.scad adapters/mx-adapter.stl
+	${SCAD} ${SCADFLAGS} --render -o $@ $<
 
 clean:
 	rm ${TARGETS}
