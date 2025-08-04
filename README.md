@@ -8,6 +8,9 @@ Right now the only recommended model is the low profile trackpoint clamp stem ex
 
 The `trackpoint-lp-square` stem extension is a work in progress, as I've been having difficulty obtaining a press-fit that will not rock on at least one axis. I've stopped working on it as I found, at least with the Sprintek trackpoint modules, **removing a press-fit stem extension can rip the trackpoint stem off of the sensor, so proceed at your own risk!** If you do suffer this fate, you can try supergluing the stem back on. If you are committed to this path, your best bet is probably using [series.scad](series.scad) to print a variety of sizes at once and possibly tweaking the corner cutouts if you see rounding of the corners that interferes with insertion (or if the corner cutouts are too large and you get rounding of the sides of the hole).
 
+#### See Also
+* [Printed Keycap Mods](https://github.com/wolfwood/printed-keycap-mods): my 3D printed keycap generator with trackpoint notch support
+* [Try-a-Dactyl](https://github.com/wolfwood/tryadactyl): my 3D printed keyboard generator with trackpoint support
 
 ### Navigation Switch Keycap and MX Adapter
 The project has functional MX adapters and stems that fit the SKQU and SKRH nav switches described below, and 'keycaps' for using a trackpoint rubber cap.
