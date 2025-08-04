@@ -10,6 +10,32 @@ Trackpoint | Nav
 -->
 <img src="images/sk8707-51-old.jpg" width="300"> <img src="images/nav-switch.jpg" width="300">
 
+<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
+**Table of Contents**
+
+  - [Status](#status)
+    - [Trackpoint Stem Extension](#trackpoint-stem-extension)
+      - [See Also](#see-also)
+    - [Navigation Switch Keycap and MX Adapter](#navigation-switch-keycap-and-mx-adapter)
+  - [Usage](#usage)
+  - [Printer Settings](#printer-settings)
+  - [Comparison of Supported Nav Switches](#comparison-of-supported-nav-switches)
+    - [SKQU - The Classic 10x10 mm 5-way Nav Switch](#skqu---the-classic-10x10-mm-5-way-nav-switch)
+    - [Datasheet](#datasheet)
+      - [Wiring](#wiring)
+      - [Operating Force](#operating-force)
+    - [SKRH - The Replacement](#skrh---the-replacement)
+    - [Datasheet](#datasheet-1)
+      - [Wiring](#wiring-1)
+      - [Operating Force](#operating-force-1)
+    - [RKJXS - The 8-way Upgrade](#rkjxs---the-8-way-upgrade)
+    - [Datasheet](#datasheet-2)
+      - [Wiring](#wiring-2)
+      - [Operating Force](#operating-force-2)
+
+<!-- markdown-toc end -->
+
+
 ## Status
 
 ### Trackpoint Stem Extension
