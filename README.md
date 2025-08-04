@@ -49,7 +49,8 @@ I have only used FDM prints to produce these models so far. SLA results could be
 
 **[r/ErgoMechKeyboards](https://www.reddit.com/r/ErgoMechKeyboards/)** has coalesced around these, particularly due to the excellent modelling work and infographic by *[u/HellMoneyWarriors](https://www.reddit.com/user/hellmoneywarriors/)* found [here on thingiverse](https://www.thingiverse.com/thing:3958026), through-hole contacts, and easy availability from [Adafruit](https://www.adafruit.com/product/504) and others. Turns out these are all roughly the same regardless of manufacturer; clones of an obsoleted ALPS part, SKQU.
 
-#### [Datasheet](https://cdn-shop.adafruit.com/datasheets/SKQUCAA010-ALPS.pdf)
+### Datasheet
+[Datasheet](https://cdn-shop.adafruit.com/datasheets/SKQUCAA010-ALPS.pdf)
 
 #### Wiring
 There is one pin for each of the 5 switches and one common pin.
@@ -70,7 +71,8 @@ At roughly 160 gf depending on vendor, more than triple the regular keyswitches 
 
 The compact ALPS SKRH family is the manufacturer recommended replacement for the obsoleted SKQU. Longer operating life, lower operating force and smaller footprint should all make this switch an obvious improvement. Unlike the SKQU it doesn't sit flat, but has a protrusion under the stem and optional guide bosses depending on the part number.
 
-#### [Datasheet](https://tech.alpsalpine.com/prod/e/pdf/multicontrol/switch/skrh/skrh.pdf)
+### Datasheet
+[Datasheet](https://tech.alpsalpine.com/prod/e/pdf/multicontrol/switch/skrh/skrh.pdf)
 There are [kicad footprints for this switch here](https://github.com/crides/kleeb/tree/master/switch.pretty), although I haven't tested them personally.
 
 #### Wiring
@@ -88,7 +90,8 @@ The pinout is not the identical to the SKQU, but there are still 6 contacts.
 
 Unfortunateky, the ALPS RKJXS has also been obsoleted.
 
-#### [Datasheet](https://tech.alpsalpine.com/prod/e/pdf/multicontrol/switch/rkjxs/rkjxs.pdf)
+### Datasheet
+[Datasheet](https://tech.alpsalpine.com/prod/e/pdf/multicontrol/switch/rkjxs/rkjxs.pdf)
 
 #### Wiring
 This is a surface mount part, so soldering may be more challenging.
