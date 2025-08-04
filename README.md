@@ -1,20 +1,20 @@
-# Navigation Switch Keycaps and MX Adapters, and Trackpoint Extension Stems
+# Trackpoint Extension Stems, and Navigation Switch Keycaps and MX Switch Mount Adapters
 
 
 ## Status
 
-### Navigation Switch Keycap and MX Adapter Status
-Right now, the project has functional MX adapters and stems that fit the SKQU and SKRH nav switches described below, and 'keycaps' for using a trackpoint rubber cap.
+### Trackpoint Stem Extension
+Right now the only recommended model is the low profile trackpoint clamp stem extension, `trackpoint-lp-clamp`. This fits over the trackpoint stem and then clamps diagonally using two M1.6x8 or longer screws, along with appropriate washers, lock washers and nuts. make sure to tune the `vertical_slop` so that you can see the trackpoint stem underneath the clamp (i.e. the clamp is not resting flat on the trackpoint sensor, but instead resting on the top of the trackpoint stem and held off the surface of the sensor). This will help prevent force on the top of the extension from levering the trackpoint stem and breaking it off (if this does happen, it is possible to superglue the stem back into place but it should be avoided).
+
+The `trackpoint-lp-square` stem extension is a work in progress, as I've been having difficulty obtaining a press-fit that will not rock on at least one axis. I've stopped working on it as I found, at least with the Sprintek trackpoint modules, **removing a press-fit stem extension can rip the trackpoint stem off of the sensor, so proceed at your own risk!** If you do suffer this fate, you can try supergluing the stem back on. If you are committed to this path, your best bet is probably using [series.scad](series.scad) to print a variety of sizes at once and possibly tweaking the corner cutouts if you see rounding of the corners that interferes with insertion (or if the corner cutouts are too large and you get rounding of the sides of the hole).
+
+
+### Navigation Switch Keycap and MX Adapter
+The project has functional MX adapters and stems that fit the SKQU and SKRH nav switches described below, and 'keycaps' for using a trackpoint rubber cap.
 
 There are also a variety of purely 3D-printed keycaps, in a variety of shapes: cup, saddle, bar, banana (maybe I should have called it macaroni?), dome and cup with a 'chin' which is meant to be used at an angle with the chin providing extra material to press down/towards the user. Right now I think the trackpoint is the most comfortable; everything else should be considered a work in progress, but the dome (basically a less-good trackpoint) and banana show the most promise. Sheet versions of the cup and saddle are thinner and less likely to bump into adjacent keys, but the plain versions are cool too.
 
 The RKJXS adapter (and stem) exist but are not quite useable in current form. The adapter in particular is challenging because the switch is very large and the adapter walls become very narrow, to the point that the slicer ignores them.
-
-
-### Trackpoint Stem Extension Status
-Right now the only recommended model is the  low profile trackpoint clamp stem extension, `trackpoint-lp-clamp`. This fits over the trackpoint stem and then clamps diagonally using two M1.6x8 or longer screws, along with appropriate washers, lock washers and nuts. make sure to tune the `vertical_slop` so that you can see the trackpoint stem underneath the clamp (i.e. the clamp is not resting flat on the trackpoint sensor, but instead resting on the top of the trackpoint stem and held off the surface of the sensor). This will help prevent force on the top of the extension from levering the trackpoint stem and breaking it off (if this does happen, it is possible to superglue the stem back into place but it should be avoided).
-
-The `trackpoint-lp-square` stem extension is a work in progress, as I've been having difficulty obtaining a press-fit that will not rock on at least one axis. I've stopped working on it as I found, at least with the Sprintek trackpoint modules, **removing a press-fit stem extension can rip the trackpoint stem off of the sensor, so proceed at your own risk!** If you do suffer this fate, you can try supergluing the stem back on. If you are committed to this path, your best bet is probably using [series.scad](series.scad) to print a variety of sizes at once and possibly tweaking the corner cutouts if you see rounding of the corners that interferes with insertion (or if the corner cutouts are too large and you get rounding of the sides of the hole).
 
 
 ## Usage
