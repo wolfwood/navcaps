@@ -1,5 +1,14 @@
 # Trackpoint Extension Stems, and Navigation Switch Keycaps and MX Switch Mount Adapters
 
+<!--
+both 4:5
+<img src="images/trackpoint.jpg" width="300"> <img src="images/nav-switch.jpg" width="300">
+![Trackpoint Stem](images/trackpoint.jpg) ![Nav Switch](images/nav-switch.jpg)
+Trackpoint | Nav
+:---:| :---:
+![Trackpoint Stem](images/trackpoint.jpg) | ![Nav Switch](images/nav-switch.jpg)
+-->
+<img src="images/sk8707-51-old.jpg" width="300"> <img src="images/nav-switch.jpg" width="300">
 
 ## Status
 
