@@ -19,6 +19,8 @@ Trackpoint | Nav
     - [Navigation Switch Keycap and MX Adapter](#navigation-switch-keycap-and-mx-adapter)
   - [Usage](#usage)
   - [Printer Settings](#printer-settings)
+    - [Trackpoint Stem Extensions](#trackpoint-stem-extensions-1)
+    - [Old Advice for Nav Caps](#old-advice-for-nav-caps)
   - [Comparison of Supported Nav Switches](#comparison-of-supported-nav-switches)
     - [SKQU - The Classic 10x10 mm 5-way Nav Switch](#skqu---the-classic-10x10-mm-5-way-nav-switch)
     - [Datasheet](#datasheet)
@@ -66,8 +68,16 @@ You can then open the the stem in openscad to look at the result, or `openscad f
 
 ## Printer Settings
 
-I have only used FDM prints to produce these models so far. SLA results could be wildly different. [stems/SKRH.scad](stems/SKRH.scad) has some specific recommendations but here's some general tips:
+### Trackpoint Stem Extensions
+With Prusament PLA and a Prusa MK4S I have made very rigid and accurate parts, which are more than sufficient for the task. 
 
+I would avoid using PLA Silk or TPU, but I have had successful prints with other rigid materials that are not typically suited to fine details, like PC-CF. Very little material is used (~1 g) so it's worth using a quality filament brand.
+
+Standard 0.2 mm layer height with a 0.4 mm nozzle works great. Use 4 perimeters and rectilinear infill (or honestly you can set infill to 0%). No support is needed, but it can be used e.g. when printing the stem extension at the same time as a keyboard.
+
+Always print at least two extensions, or something else taller than the extension. Lone trackpoint stem extensions may get melty and deformed toward the top, printing several at once will cause the hot end to move far enough away for each layer to cool before the next.
+
+### Old Advice for Nav Caps
 * print keycaps at a 45 degree angle for a nicer surface against your finger (this may make the stem fit against the switch worse)
 
 * print "external perimeters first" to get better dimensional accuracy for both keycap stems and MX adapters
@@ -77,9 +87,6 @@ I have only used FDM prints to produce these models so far. SLA results could be
 * you might get a better fit against the switch printing upside down (no elephant foot on the first few layers making things too tight)
 
 * don't decrease layer height expecting prints to better fit the switch stem; X-Y accuracy isn't dependent on layer height, and bridges of thinner layers sag more, plugging up the switch hole in a stem
-
-* trackpoint stem extensions may get melty toward the top, print several at once so the hot end moves far enough away for each layer to cool before the next (this is a great time to experiment with several sizes at once, ala [series.scad](series.scad))
-
 
 ## Comparison of Supported Nav Switches
 
