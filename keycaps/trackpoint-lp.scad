@@ -25,7 +25,7 @@ function adjusted_side_y(stem=true) = stem ? side + (is_undef($inner_slop_y) ? 0
 // this alias is for using when making a hole for a stem
 module cap_tplp(stem=true) {
   //adjusted_side = adjusted_side();
-  adjusted_height = height(stem) + (stem?0*layer_height:0);
+  adjusted_height = height(stem) + (stem?0*layer_height:-layer_height);
 
   translate([0,0,adjusted_height/2]) cube([adjusted_side_x(stem=stem),adjusted_side_y(stem=stem),adjusted_height],true);
   if(stem) {
