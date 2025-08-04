@@ -4,8 +4,8 @@
 
 /* height of the part the finger rests on, doesn't exclude higher protrusions,
        eg. the saddle keycap rises on either side of the thumb for leverage */
-effective_height=16+5;
-//effective_height=11;
+effective_height=16; // tp
+//effective_height=11;// nav switch
 
 // maximum width in any direction, strict limit to prevent collision with adjacent keycaps
 total_width=16;
@@ -14,7 +14,7 @@ total_width=16;
 minimum_thickness = 1;
 
 
-keycap_style = "trackpoint-lp";
+keycap_style = "trackpoint-slp";
 
 /* can be auto (computationally expensive), manual (a bit janky, needs to be implemented for each keycap), or none.
      has no effect on certain keycaps such as trackpoint variants */
@@ -25,7 +25,7 @@ chamfer_style = "auto";
 keycap_rotation = [0,0,0];
 
 
-stem_model = "trackpoint-lp-clamp";
+stem_model = "trackpoint-lp-clamp-aio-platform";
 
 
 // "cr10 or "prusa" have presets, any other string will use a default tolerance, usually 0
