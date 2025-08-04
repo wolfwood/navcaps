@@ -6,4 +6,4 @@ rotate([0,0,-keycap_rotation.z])
 
 // non-trackpoint keycaps have a better texture printed at an angle. for now disable rotation.
 //rotate([0,45,0])
-assembled($fn=120);
+assembled($fa=3, $fs=.1);
