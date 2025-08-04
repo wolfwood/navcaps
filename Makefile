@@ -1,3 +1,4 @@
+SCAD=openscad
 #TARGETS=SKQU.stl
 #all: ${TARGETS}
 
@@ -15,13 +16,13 @@ include/stem.scad : stems/${STEM}.scad settings.scad
 	ln -srf $< $@
 
 things/series%.stl : series.scad settings.scad include/keycap.scad include/stem.scad
-	openscad -q --hardwarnings --render -o $@ $<
+	${SCAD} -q --hardwarnings --render -o $@ $<
 
 things/%.stl : final.scad settings.scad include/keycap.scad include/stem.scad
-	openscad -q --hardwarnings --render -o $@ $<
+	${SCAD} -q --hardwarnings --render -o $@ $<
 
 things/%_mx-adapter.stl: adapters/%.scad settings.scad adapters/util.scad adapters/mx-adapter.stl
-	openscad -q --hardwarnings --render -o $@ $<
+	${SCAD} -q --hardwarnings --render -o $@ $<
 
 clean:
 	rm ${TARGETS}
