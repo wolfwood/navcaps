@@ -13,10 +13,10 @@ Trackpoint | Nav
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
 **Table of Contents**
 
-  - [Status](#status)
-    - [Trackpoint Stem Extension](#trackpoint-stem-extension)
-      - [See Also](#see-also)
-    - [Navigation Switch Keycap and MX Adapter](#navigation-switch-keycap-and-mx-adapter)
+  - [Trackpoint Stem Extensions](#trackpoint-stem-extensions)
+    - [See Also](#see-also)
+    - [Discontinued](#discontinued)
+  - [Navigation Switch Keycaps and MX Adapters](#navigation-switch-keycaps-and-mx-adapters)
   - [Usage](#usage)
   - [Printer Settings](#printer-settings)
     - [Trackpoint Stem Extensions](#trackpoint-stem-extensions-1)
@@ -38,18 +38,38 @@ Trackpoint | Nav
 <!-- markdown-toc end -->
 
 
-## Status
+## Trackpoint Stem Extensions
+The recommended model for modern trackpoint sensors with 2.5 mm x 2.5 mm square stems for "super low profile" or newer rubber caps is `trackpoint-lp-clamp-aio-platform`. This compact stem fits over the trackpoint stem and then clamps diagonally using two M1.6x6 or longer screws. The hex holes hold the nut in place while tightening. The platform flares out to support the bottom of the rubber dome, which increases responsiveness. The clearance required for the clamp is cylinder above the trackpoint sensor with 5 mm height and 13 mm diameter.
 
-### Trackpoint Stem Extension
-Right now the only recommended model is the low profile trackpoint clamp stem extension, `trackpoint-lp-clamp`. This fits over the trackpoint stem and then clamps diagonally using two M1.6x8 or longer screws, along with appropriate washers, lock washers and nuts. make sure to tune the `vertical_slop` so that you can see the trackpoint stem underneath the clamp (i.e. the clamp is not resting flat on the trackpoint sensor, but instead resting on the top of the trackpoint stem and held off the surface of the sensor). This will help prevent force on the top of the extension from levering the trackpoint stem and breaking it off (if this does happen, it is possible to superglue the stem back into place but it should be avoided).
+You can limit the width of the platform so it fits through your PCB and/or switch plate by changing the value of `max_dia` in `stems/trackpoint-lp-clamp-aio-platform.scad`. Or use the non-platform variant `trackpoint-lp-clamp-aio` for a narrower stem, which can itself be controlled by changing the value of `stem_dia`. I generally use a 5 mm hole for the stem in my keyboard plate for the default 4 mm `stem_dia` and 4.9 `max_dia`. `stem_dia` needs to have clearance for the stem's movement, along with possible off center or angled mounting. `max_dia` just needs to fit through.
 
-The `trackpoint-lp-square` stem extension is a work in progress, as I've been having difficulty obtaining a press-fit that will not rock on at least one axis. I've stopped working on it as I found, at least with the Sprintek trackpoint modules, **removing a press-fit stem extension can rip the trackpoint stem off of the sensor, so proceed at your own risk!** If you do suffer this fate, you can try supergluing the stem back on. If you are committed to this path, your best bet is probably using [series.scad](series.scad) to print a variety of sizes at once and possibly tweaking the corner cutouts if you see rounding of the corners that interferes with insertion (or if the corner cutouts are too large and you get rounding of the sides of the hole).
+For a build with minimum Y spacing between switches, `trackpoint-lp-clamp-aio-platform-narrow` trades a little rigidity for tight key spacing, allowing 15 mm spacing in Y and 17.6 mm in X. You can achieve 15mm X spacing by offsetting the keycap stems by 1.3 mm on each side. I have used this with a 2.7 mm x 6 mm rectangular hole in my keyboard plate.
 
-#### See Also
+For a trackpoint sensor with a round stem, such as on the Sprintek 8707-51, `sprintek51-clamp-aio` is available.
+
+If space is not at a premium and you want a firm hold with washers and lock washers, use the non-aio variants, `trackpoint-lp-clamp` and `sprintek51-clamp`. Minimum screw length is M1.6x8. I have not found this to be necessary in practice.
+
+If necessary, make sure to tune the `vertical_slop` so that you can see the trackpoint stem underneath the clamp (i.e. the clamp is not resting flat on the trackpoint sensor, but instead resting on the top of the trackpoint stem and held off the surface of the sensor). This will help prevent force on the top of the extension from levering the trackpoint stem and breaking it off (if this does happen, it is possible to superglue the stem back into place but it should be avoided).
+
+It is important to make sure you have the correct setting for `keycap_style` as the rubber cap's height is subtracted from `effective_height` to determine the actual height of the stem generated. If you are having difficulty measuring your keyboard, a 16 mm `effective_height` is a good starting place for lower profile keyboards, such as those using unsculpted keycaps or choc switches. 20 mm for a high profile keyboard such as those with SA keycaps on MX switches.
+
+`keycap_style` | Height 
+---|---
+`trackpoint-lp` | 5 mm
+`trackpoint-slp` | 4 mm
+`trackpoint-3_5` | 3.5 mm
+`trackpoint-3` | 3 mm
+
+### See Also
+* [SaotoTech's Trackpoint Cap Comparison](https://saoto28.wixsite.com/trackpoint4life/comparison): to figure out what cap type to put in `settings.scad`.
 * [Printed Keycap Mods](https://github.com/wolfwood/printed-keycap-mods): my 3D printed keycap generator with trackpoint notch support
 * [Try-a-Dactyl](https://github.com/wolfwood/tryadactyl): my 3D printed keyboard generator with trackpoint support
 
-### Navigation Switch Keycap and MX Adapter
+### Discontinued
+The `trackpoint-lp-square` stem extension is a suspended effort, as I had difficulty obtaining a press-fit that will not rock on at least one axis. I stopped working on it as I found, at least with the Sprintek trackpoint modules, **removing a press-fit stem extension can rip the trackpoint stem off of the sensor, so proceed at your own risk!** If you do suffer this fate, you can try supergluing the stem back on. If you are committed to this path, your best bet is probably using [series.scad](series.scad) to print a variety of sizes at once and possibly tweaking the corner cutouts if you see rounding of the corners that interferes with insertion (or if the corner cutouts are too large and you get rounding of the sides of the hole).
+
+
+## Navigation Switch Keycaps and MX Adapters
 The project has functional MX adapters and stems that fit the SKQU and SKRH nav switches described below, and 'keycaps' for using a trackpoint rubber cap.
 
 There are also a variety of purely 3D-printed keycaps, in a variety of shapes: cup, saddle, bar, banana (maybe I should have called it macaroni?), dome and cup with a 'chin' which is meant to be used at an angle with the chin providing extra material to press down/towards the user. Right now I think the trackpoint is the most comfortable; everything else should be considered a work in progress, but the dome (basically a less-good trackpoint) and banana show the most promise. Sheet versions of the cup and saddle are thinner and less likely to bump into adjacent keys, but the plain versions are cool too.
