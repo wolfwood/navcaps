@@ -1,4 +1,4 @@
-# Trackpoint Extension Stems, and Navigation Switch Keycaps and MX Switch Mount Adapters
+# Trackpoint Stem Extensions, and Navigation Switch Keycaps and MX Switch Mount Adapters
 
 <!--
 both 4:5
@@ -78,7 +78,6 @@ The RKJXS adapter (and stem) exist but are not quite useable in current form. Th
 
 
 ## Usage
-
 First, edit `settings.scad` to select a `stem_model` and `keycap_style` from among those available in `stems/` and `keycaps/` respectively. Edit others settings as appropriate, the main one of interest is `effective_height`; measuring the height of adjacent keys from the switch plate will provide a good starting place. All distances are in millimeters.
 
 Next, run `make update`. This is necessary anytime you edit `stem_model` or `keycap_style` because openscad only allows string literals in imports, so we import a symlink, maintained by `make`, that points to the appropiate files. You will also need to manually initiate a preview or render once in any running openscad window as it doesn't watch the symlinks for changes.
