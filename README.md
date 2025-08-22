@@ -8,7 +8,10 @@ Trackpoint | Nav
 :---:| :---:
 ![Trackpoint Stem](images/trackpoint.jpg) | ![Nav Switch](images/nav-switch.jpg)
 -->
-<img src="images/sk8707-51-old.jpg" width="300"> <img src="images/nav-switch.jpg" width="300">
+
+<div style="text-align: center;">
+<img src="images/cutaway-platform-tp-stem.jpg" width="400"> <img src="images/nav-switch.jpg" width="400">
+</div>
 
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
 **Table of Contents**
@@ -39,13 +42,30 @@ Trackpoint | Nav
 
 
 ## Trackpoint Stem Extensions
+
+<div style="text-align: center;">
+<img src="images/clamp-aio-platform.jpg" width="500">
+</div>
+
 The recommended model for modern trackpoint sensors with 2.5 mm x 2.5 mm square stems for "super low profile" or newer rubber caps is `trackpoint-lp-clamp-aio-platform`. This compact stem fits over the trackpoint stem and then clamps diagonally using two M1.6x8 screws and M1.6 hex nuts (with M1.6x6 it is a bit hard to catch the nut). The hex holes hold the nut in place while tightening. The platform flares out to support the bottom of the rubber dome, which increases responsiveness. The clearance required for the clamp is a cylinder above the trackpoint sensor with 5 mm height and 13 mm diameter.
 
+<div style="text-align: center;">
+<img src="images/tp-platform.jpg" width="500">
+</div>
+
 You can limit the width of the platform so it fits through your PCB and/or switch plate by changing the value of `max_dia` in `stems/trackpoint-lp-clamp-aio-platform.scad`. Or use the non-platform variant `trackpoint-lp-clamp-aio` for a narrower stem, which can itself be controlled by changing the value of `stem_dia`. I generally use a 5 mm hole for the stem in my keyboard plate for the default 4 mm `stem_dia` and 4.9 `max_dia`. `stem_dia` needs to have clearance for the stem's movement, along with possible off center or angled mounting. `max_dia` just needs to fit through.
+
+<div style="text-align: center;">
+<img src="images/sk8702-minspace.jpg" width="500">
+</div>
 
 For a build with minimum Y spacing between switches, `trackpoint-lp-clamp-aio-platform-narrow` trades a little rigidity for tight key spacing, allowing 15 mm spacing in Y and 17.6 mm in X. You can achieve 15mm X spacing by offsetting the keycap stems by 1.3 mm on each side. I have used this with a 2.7 mm x 6 mm rectangular hole in my keyboard plate.
 
 For a trackpoint sensor with a round stem, such as on the Sprintek 8707-51, `sprintek51-clamp-aio` is available.
+
+<div style="text-align: center;">
+<img src="images/sk8707-51-old-wide.jpg" width="500">
+</div>
 
 If space is not at a premium and you want a firm hold with washers and lock washers, use the non-aio variants, `trackpoint-lp-clamp` and `sprintek51-clamp`. Minimum screw length is M1.6x8. I have not found this to be necessary in practice.
 
